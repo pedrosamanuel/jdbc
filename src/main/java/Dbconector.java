@@ -5,10 +5,9 @@ public class Dbconector {
         Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
     }
 
-    public void actualizarDpto() throws Exception {
+    public void actualizarDpto()  {
         Statement stmt = null;
-        ResultSet rs = null;
-        int filasAfectadas = 0;
+        int filasAfectadas;
 
         try {
             cargarClase();
@@ -32,24 +31,19 @@ public class Dbconector {
         } catch (Exception e) {
             System.out.println("Error" + e.getMessage());
         } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                }
-            }
 
             if (stmt != null) {
                 try {
                     stmt.close();
                 } catch (SQLException e) {
+                    System.out.println(e.getMessage());
                 }
             }
 
         }
     }
 
-    public void ConsultarDpto() throws Exception {
+    public void ConsultarDpto()  {
         Statement stmt = null;
         ResultSet rs = null;
 
@@ -83,6 +77,7 @@ public class Dbconector {
                 try {
                     rs.close();
                 } catch (SQLException e) {
+                    System.out.println(e.getMessage());
                 }
             }
 
@@ -90,6 +85,7 @@ public class Dbconector {
                 try {
                     stmt.close();
                 } catch (SQLException e) {
+                    System.out.println(e.getMessage());
                 }
             }
         }
