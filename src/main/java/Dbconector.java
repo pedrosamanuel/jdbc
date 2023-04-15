@@ -12,17 +12,20 @@ public class Dbconector {
             try {
                 cargarClase();
 
-                Connection c = DriverManager.getConnection("jdbc:mysql://db4free/qatar2022", "manupe", "manupe2003");
+                Connection c = DriverManager.getConnection("jdbc:mysql://db4free.net/qatar2022", "manupe", "manupe2003");
 
                 stmt = c.createStatement();
 
-                filasAfectadas = stmt.executeUpdate("INSERT INTO Empleados (DNI, Nombre, Apellido, Nacionalidad, Departamento) VALUES (\"32111444\", \"Marcos\", \"Rojo\", \"Argentina\", \"M\")");
+                filasAfectadas = stmt.executeUpdate("INSERT INTO Empleados (DNI, Nombre, Apellido, Nacionalidad, Departamento) VALUES (\"32111442\", \"Marcos\", \"Rojo\", \"Argentina\", \"M\")");
                 System.out.println("filas afectadas: " + filasAfectadas);
 
-                filasAfectadas = stmt.executeUpdate("UPDATE Empleados SET Nacionalidad = \"Bolivia\" WHERE DNI = \"32111444\"");
+                filasAfectadas = stmt.executeUpdate("UPDATE Empleados SET Nacionalidad = \"Bolivia\" WHERE DNI = \"32111442\"");
                 System.out.println("filas afectadas: " + filasAfectadas);
 
-                filasAfectadas = stmt.executeUpdate("DELETE FROM Empleados WHERE ID = \"V\")");
+                filasAfectadas = stmt.executeUpdate("DELETE FROM Empleados WHERE Departamento = \"V\"");
+                System.out.println("filas afectadas: " + filasAfectadas);
+
+                filasAfectadas = stmt.executeUpdate("DELETE FROM Departamentos WHERE ID = \"V\"");
                 System.out.println("filas afectadas: " + filasAfectadas);
 
             } catch (Exception e) {
